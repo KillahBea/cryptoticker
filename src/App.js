@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import HelloWorld from './components/HelloWorld'
+import CryptoData from './components/cryptoData'
 
 class App extends Component {
   render() {
-    return <HelloWorld />
+    return (
+      <>
+        <CryptoData />
+      </>
+    )
   }
 }
 

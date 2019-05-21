@@ -1,0 +1,41 @@
+import React, { Component } from 'react'
+import Coin from './Coin'
+class CryptoData extends Component {
+  state = {
+    cryptoCurrencies: []
+  }
+  componentDidMount() {
+    // this.getCryptoDataFromApi()
+  }
+  // getCryptoDataFromApi = () => {
+    fetch('https://api.coinmarketcap.com/v2/ticker/?limit=20')
+      .then(resp => {
+        return resp.json()
+      })
+      .then(json => {
+        console.log(json)
+        this.setState({
+          cryptoCurrencies: Object.values(json.data)
+        })
+        console.log(Object.values(json.data))
+      })
+  }
+
+  render() {
+    return (
+      <>
+        <div>
+          {this.state.cryptoCurrencies.map(currency => {
+            return (
+              <>
+                <Coin name={currency.name} symbol={currency.symbol} price={currency.price} />
+              </>
+            )
+          })}
+        </div>
+      </>
+    )
+  }
+}
+
+export default CryptoData
