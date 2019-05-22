@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import CryptoData from './components/cryptoData'
-
+import CryptoData from './components/CryptoData'
+import './index.css'
 class App extends Component {
   render() {
     return (

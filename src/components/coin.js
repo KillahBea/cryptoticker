@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-
-class coin extends Component {
+import Icon from './Icon'
+class Coin extends Component {
   render() {
     return (
-      <div>
+      <div className="info">
+        {console.log(this)}
+        <div className="icon">
+          <Icon icon={this.props.icon} />
+        </div>
         <h3>{this.props.name}</h3>
         <p>{this.props.symbol}</p>
-        <p>{this.props.price}</p>}
+        <p>{this.props.price}</p>
       </div>
     )
   }
 }
 
-export default coin
+export default Coin

@@ -6,7 +6,6 @@ class CryptoData extends Component {
   }
   componentDidMount() {
     this.getCryptoDataFromApi()
-    setInterval(this.getCryptoDataFromApi, 10000)
   }
   getCryptoDataFromApi = () => {
     fetch('https://api.coinmarketcap.com/v2/ticker/?limit=20')
@@ -14,27 +13,22 @@ class CryptoData extends Component {
         return resp.json()
       })
       .then(json => {
-        // console.log(json)
+        console.log(json)
         this.setState({
           cryptoCurrencies: Object.values(json.data)
         })
-        // console.log(Object.values(json.data))
+        console.log(Object.values(json.data))
       })
   }
 
   render() {
     return (
       <>
-        <div className="coin">
+        <div>
           {this.state.cryptoCurrencies.map(currency => {
             return (
               <>
-                <Coin
-                  icon={currency.id}
-                  name={currency.name}
-                  symbol={currency.symbol}
-                  price={currency.quotes.USD.price}
-                />
+                <Coin name={currency.name} symbol={currency.symbol} price={currency.price} />
               </>
             )
           })}
